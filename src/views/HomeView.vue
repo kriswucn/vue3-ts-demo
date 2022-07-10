@@ -1,18 +1,35 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+    <div><input v-model="msg" type="text" /></div>
+    <div><input :value="msg" type="text" /></div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import { defineComponent, onMounted } from 'vue';
+import { ref } from 'vue';
 
 export default defineComponent({
-  name: 'HomeView',
-  components: {
-    HelloWorld,
-  },
-});
+    setup() {
+        let msg = ref<string>('hello webkit');
+        interface Member {
+            id: number,
+            name: string
+        };
+
+        const userInfo = ref<Member>({
+            id: 1,
+            name: 'Tom'
+        });
+
+        return {
+            msg,
+            userInfo,
+        };
+    }
+})
 </script>
+
+<style scoped>
+.msg {
+    font-size: 14px;
+}
+</style>
