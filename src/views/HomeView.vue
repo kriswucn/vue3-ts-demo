@@ -1,31 +1,33 @@
 <template>
     <div><input v-model="msg" type="text" /></div>
-    <div><input :value="msg" type="text" /></div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue';
-import { ref } from 'vue';
+import { defineComponent, ref } from 'vue';
+
+// person interface
+interface Member {
+    id: number,
+    name: string,
+}
 
 export default defineComponent({
     setup() {
-        let msg = ref<string>('hello webkit');
-        interface Member {
-            id: number,
-            name: string
-        };
-
-        const userInfo = ref<Member>({
-            id: 1,
-            name: 'Tom'
-        });
-
+        const msg = ref<string>('Hello, world!');
+        const uids = ref<number[]>([1, 2, 3]);
+        const names = ref<string[]>(['Tom', 'Jerry', 'Andy']);
+        const memberList = ref<Member[]>([
+            { id: 1, name: 'Tom' },
+            { id: 2, name: 'Jerry' }
+        ])
         return {
             msg,
-            userInfo,
-        };
-    }
-})
+        }
+    },
+
+}
+);
+
 </script>
 
 <style scoped>
